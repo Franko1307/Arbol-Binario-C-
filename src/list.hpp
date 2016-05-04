@@ -34,17 +34,17 @@ template <typename Type> bool list<Type>::insert_left( node<Type> *previous, nod
 template <typename Type> bool list<Type>::remove( node<Type> *leaf) {
   if (leaf->previous) leaf->previous->next = leaf->next;
   if (leaf->next) leaf->next->previous = leaf->previous;
-  if (begin == leaf)
-    if (begin->next) begin = begin->next;
-    else begin = NULL;
-  leaf->previous = NULL;
-  leaf->next = NULL;
+  if (begin == leaf) begin = begin->next;        
 }
 template <typename Type> void list<Type>::print() {
   node<Type> *n = begin;
   std::cout << "List: " << std::endl;
   while (n) {
-    std::cout << n->key << ",";
+    std::cout << "Nodo: " << n->key << std::endl;
+    if (n->father) std::cout << "Padre: " << n->father->key << std::endl;
+    if (n->left_child) std::cout << "Hijo izquierdo: " << n->left_child->key << std::endl;
+    if (n->right_child) std::cout << "Hijo derecho: " << n->right_child->key << std::endl;
+    std::cout << "-----------------------------------" << std::endl;
     n = n->next;
   }
   std::cout << "\b " << std::endl;
